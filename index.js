@@ -12,8 +12,8 @@ app.use(bodyParser.json());
 // Conexión a MySQL Alwaysdata
 const db = mysql.createPool({
     host: 'mysql-adrielisa.alwaysdata.net',
-    user: 'TU_USUARIO',
-    password: 'TU_PASSWORD',
+    user: 'adrielisa',
+    password: 'adrielisa',
     database: 'adrielisa_ia'
 });
 console.log('✅ Conectado a MySQL Alwaysdata');
