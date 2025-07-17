@@ -1,6 +1,10 @@
 # Dependencias
 node_modules/
 
+# Archivos de base de datos
+*.sqlite
+*.db
+
 # Archivos de log
 *.log
 npm-debug.log*

@@ -1,7 +1,7 @@
 // Backend sencillo con Node.js, Express y SQLite para login y registro
 
 const express = require('express');
-const sqlite3 = require('sqlite3').verbose();
+const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 
@@ -11,10 +11,12 @@ const PORT = 3005;
 // Middlewares
 app.use(bodyParser.json());
 
-// Base de datos SQLite
-const db = new sqlite3.Database(':memory:', (err) => {
-    if (err) console.error(err.message);
-    else console.log('Conectado a SQLite en memoria');
+// Base de datos SQLite persistente
+const db = mysql.createPool({
+    host: 'mysql-adrielisa.alwaysdata.net',
+    user: 'TU_USUARIO',
+    password: 'TU_PASSWORD',
+    database: 'adrielisa_ia'
 });
 
 // Crear tabla usuarios
@@ -53,6 +55,24 @@ app.post('/login', (req, res) => {
         if (!valid) return res.status(401).json({ error: 'Contraseña incorrecta' });
 
         res.json({ mensaje: 'Login exitoso', userId: row.id });
+    });
+});
+
+// Ruta para obtener todos los usuarios (sin passwords)
+app.get('/users', (req, res) => {
+    db.all(`SELECT id, nombre, email FROM usuarios`, [], (err, rows) => {
+        if (err) return res.status(500).json({ error: 'Error al consultar usuarios' });
+        res.json({ usuarios: rows });
+    });
+});
+
+// Ruta para obtener un usuario específico por ID
+app.get('/users/:id', (req, res) => {
+    const { id } = req.params;
+    db.get(`SELECT id, nombre, email FROM usuarios WHERE id = ?`, [id], (err, row) => {
+        if (err) return res.status(500).json({ error: 'Error al consultar usuario' });
+        if (!row) return res.status(404).json({ error: 'Usuario no encontrado' });
+        res.json({ usuario: row });
     });
 });
 
