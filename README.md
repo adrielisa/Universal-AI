@@ -1,67 +1,67 @@
-# IA-Universal Backend
+# Universal-AI Backend
 
-Backend sencillo con Node.js, Express y SQLite para sistema de login y registro.
+Simple backend with Node.js, Express and SQLite for login and registration system.
 
-## Características
+## Features
 
-- 🔐 Sistema de autenticación con login y registro
-- 🗄️ Base de datos SQLite en memoria
-- 🔒 Encriptación de contraseñas con bcrypt
-- 🚀 API REST con Express.js
+- 🔐 Authentication system with login and registration
+- 🗄️ In-memory SQLite database
+- 🔒 Password encryption with bcrypt
+- 🚀 REST API with Express.js
 
-## Instalación
+## Installation
 
-1. Clona el repositorio:
+1. Clone the repository:
 ```bash
-git clone https://github.com/tu-usuario/ia-universal-backend.git
-cd ia-universal-backend
+git clone https://github.com/adrielisa/Universal-AI.git
+cd Universal-AI
 ```
 
-2. Instala las dependencias:
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-3. Ejecuta el servidor:
+3. Run the server:
 ```bash
 node index.js
 ```
 
-El servidor estará disponible en `http://localhost:3005`
+The server will be available at `http://localhost:3005`
 
 ## Endpoints
 
 ### POST /register
-Registra un nuevo usuario.
+Register a new user.
 
 **Body:**
 ```json
 {
-  "nombre": "Juan Pérez",
-  "email": "juan@ejemplo.com",
-  "password": "mipassword123"
+  "nombre": "John Doe",
+  "email": "john@example.com",
+  "password": "mypassword123"
 }
 ```
 
 ### POST /login
-Autentica un usuario existente.
+Authenticate an existing user.
 
 **Body:**
 ```json
 {
-  "email": "juan@ejemplo.com",
-  "password": "mipassword123"
+  "email": "john@example.com",
+  "password": "mypassword123"
 }
 ```
 
-## Dependencias
+## Dependencies
 
-- express: Framework web para Node.js
-- sqlite3: Base de datos SQLite
-- bcrypt: Encriptación de contraseñas
-- body-parser: Middleware para parsear JSON
+- express: Web framework for Node.js
+- sqlite3: SQLite database
+- bcrypt: Password encryption
+- body-parser: Middleware for parsing JSON
 
-## Tecnologías
+## Technologies
 
 - Node.js
 - Express.js

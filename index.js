@@ -60,3 +60,56 @@ app.post('/login', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
+
+// OpenAPI Spec para conexión IA
+const openAPISpec = `
+openapi: 3.0.0
+info:
+  title: API Registro/Login Universal
+  version: 1.0.0
+paths:
+  /register:
+    post:
+      summary: Registrar un nuevo usuario
+      operationId: crearUsuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Usuario creado correctamente
+
+  /login:
+    post:
+      summary: Iniciar sesión
+      operationId: loginUsuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Login exitoso
+`;
+
+// Endpoint para servir el OpenAPI
+app.get('/openapi.yaml', (req, res) => {
+    res.type('text/yaml').send(openAPISpec);
+});
