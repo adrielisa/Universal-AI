@@ -1,0 +1,27 @@
+# Dependencias
+node_modules/
+
+# Archivos de log
+*.log
+npm-debug.log*
+
+# Archivos de entorno
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos de build
+dist/
+build/
