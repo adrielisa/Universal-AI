@@ -63,7 +63,7 @@ app.listen(PORT, () => {
 
 // OpenAPI Spec para conexión IA
 const openAPISpec = `
-openapi: 3.0.0
+openapi: 3.1.0
 info:
   title: API Universal Backend
   version: 1.0.0
