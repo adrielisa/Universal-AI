@@ -65,8 +65,11 @@ app.listen(PORT, () => {
 const openAPISpec = `
 openapi: 3.0.0
 info:
-  title: API Registro/Login Universal
+  title: API Universal Backend
   version: 1.0.0
+servers:
+  - url: https://universal-ai-production.up.railway.app
+
 paths:
   /register:
     post:
@@ -107,6 +110,7 @@ paths:
       responses:
         '200':
           description: Login exitoso
+
 `;
 
 // Endpoint para servir el OpenAPI
